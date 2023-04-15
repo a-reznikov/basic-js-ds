@@ -97,21 +97,25 @@ class BinarySearchTree {
       } else {
         if (!node.left && !node.right) {
           return null;
-        } else if (!node.left) {
+        } 
+        
+        if (!node.left) {
           node = node.right;
           return node;
-        } else if (!node.left){
+        }
+        
+        if (!node.right){
           node = node.left;
           return node;
-        } else {
-          let minRight = node.right;
-          while (minRight.left) {
-            minRight = minRight.left;
-          }
-          node.data = minRight.data;
-          node.rigth = removeNode(node.right, minRight.data);
-          return node;
+        } 
+
+        let minRight = node.right;
+        while (minRight.left) {
+          minRight = minRight.left;
         }
+        node.data = minRight.data;
+        node.rigth = removeNode(node.right, minRight.data);
+        return node;
       }
     } 
     
